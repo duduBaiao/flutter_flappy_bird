@@ -18,12 +18,12 @@ class PillarState {
   final bool isPlayerCrossing;
 
   PillarState copy({
-    double x,
-    double topHeight,
-    double bottomHeight,
-    double width,
-    double headHeight,
-    bool isPlayerCrossing,
+    double? x,
+    double? topHeight,
+    double? bottomHeight,
+    double? width,
+    double? headHeight,
+    bool? isPlayerCrossing,
   }) =>
       PillarState(
         x: x ?? this.x,

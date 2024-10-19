@@ -12,10 +12,10 @@ class RectState {
   final double height;
 
   RectState copy({
-    double x,
-    double y,
-    double width,
-    double height,
+    double? x,
+    double? y,
+    double? width,
+    double? height,
   }) =>
       RectState(
         x: x ?? this.x,

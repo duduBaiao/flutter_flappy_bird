@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class StrokedText extends StatelessWidget {
   const StrokedText(
     this.text, {
-    this.fontSize,
-    this.strokeWidth,
+    required this.fontSize,
+    required this.strokeWidth,
   });
 
   final String text;

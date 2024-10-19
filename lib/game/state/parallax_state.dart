@@ -14,10 +14,11 @@ class ParallaxState {
   final double gap;
 
   ParallaxState copy({
-    double x,
-    double y,
-    double width,
-    double height,
+    double? x,
+    double? y,
+    double? width,
+    double? height,
+    double? gap,
   }) =>
       ParallaxState(
         x: x ?? this.x,

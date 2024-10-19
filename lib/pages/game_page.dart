@@ -51,7 +51,7 @@ class _GamePageState extends State<GamePage> {
     );
   }
 
-  Widget _gameArea({@required int flex}) => Expanded(
+  Widget _gameArea({required int flex}) => Expanded(
         child: _gameWidgets(),
         flex: flex,
       );
@@ -61,7 +61,7 @@ class _GamePageState extends State<GamePage> {
         builder: (context, snapshot) {
           if (!snapshot.hasData) return SizedBox();
 
-          final gameState = snapshot.data;
+          final gameState = snapshot.data!;
 
           return Stack(
             children: [
@@ -89,7 +89,7 @@ class _GamePageState extends State<GamePage> {
         ),
       );
 
-  Widget _underground({@required int flex}) => Expanded(
+  Widget _underground({required int flex}) => Expanded(
         child: Container(color: Palette.underground),
         flex: flex,
       );

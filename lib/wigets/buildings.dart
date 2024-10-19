@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 
 class Buildings extends StatelessWidget {
   const Buildings({
-    @required this.x,
-    @required this.width,
-    @required this.height,
+    required this.x,
+    required this.width,
+    required this.height,
   });
 
   final double x;

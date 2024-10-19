@@ -12,10 +12,10 @@ class ScoreState {
   final int value;
 
   ScoreState copy({
-    double y,
-    double fontSize,
-    double strokeWidth,
-    int value,
+    double? y,
+    double? fontSize,
+    double? strokeWidth,
+    int? value,
   }) =>
       ScoreState(
         y: y ?? this.y,

@@ -20,13 +20,14 @@ class PlayerState {
   final Wings wings;
 
   PlayerState copy({
-    double velocity,
-    double x,
-    double y,
-    double angle,
-    double width,
-    double height,
-    Wings wings,
+    double? velocity,
+    double? x,
+    double? y,
+    double? initialY,
+    double? angle,
+    double? width,
+    double? height,
+    Wings? wings,
   }) =>
       PlayerState(
         velocity: velocity ?? this.velocity,

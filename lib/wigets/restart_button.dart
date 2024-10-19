@@ -2,7 +2,7 @@ import 'package:flappybird/game/state/rect_state.dart';
 import 'package:flutter/material.dart';
 
 class RestartButton extends StatelessWidget {
-  const RestartButton(this.state, {@required this.onPressed});
+  const RestartButton(this.state, {required this.onPressed});
 
   final RectState state;
   final VoidCallback onPressed;
@@ -11,8 +11,7 @@ class RestartButton extends StatelessWidget {
   Widget build(BuildContext context) => Positioned(
         left: state.x,
         top: state.y,
-        child: FlatButton(
-          padding: EdgeInsets.zero,
+        child: TextButton(
           child: Image.asset(
             'assets/images/restart.png',
             width: state.width,

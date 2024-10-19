@@ -8,10 +8,9 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: "Flappy Bird",
       theme: ThemeData(
-        backgroundColor: Palette.sky,
         fontFamily: "FlappyBird",
         textTheme: TextTheme(
-          bodyText2: TextStyle(
+          bodyMedium: TextStyle(
             letterSpacing: Style.text.letterSpacing,
           ),
         ),

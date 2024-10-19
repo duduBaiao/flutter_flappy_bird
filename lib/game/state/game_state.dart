@@ -4,18 +4,17 @@ import 'package:flappybird/game/state/pillar_state.dart';
 import 'package:flappybird/game/state/player_state.dart';
 import 'package:flappybird/game/state/rect_state.dart';
 import 'package:flappybird/game/state/score_state.dart';
-import 'package:flutter/cupertino.dart';
 
 class GameState {
   const GameState({
-    @required this.player,
-    @required this.horizon,
-    @required this.ground,
-    @required this.firstPillar,
-    @required this.secondPillar,
-    @required this.score,
-    @required this.restartButton,
-    @required this.status,
+    required this.player,
+    required this.horizon,
+    required this.ground,
+    required this.firstPillar,
+    required this.secondPillar,
+    required this.score,
+    required this.restartButton,
+    required this.status,
   });
 
   final PlayerState player;

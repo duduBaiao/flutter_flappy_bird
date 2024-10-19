@@ -16,21 +16,21 @@ import 'state/game_state.dart';
 class Game {
   final _random = Random();
 
-  Timer _timer;
+  Timer? _timer;
 
   // Mutable attributes
-  Duration _lastTime;
-  double _elapsedTime;
+  var _lastTime = Duration.zero;
+  late double _elapsedTime;
 
-  GameStatus _status;
+  late GameStatus _status;
 
-  PlayerState _player;
-  ParallaxState _horizon;
-  PillarState _firstPillar;
-  PillarState _secondPillar;
-  ParallaxState _ground;
-  ScoreState _score;
-  RectState _restartButton;
+  late PlayerState _player;
+  late ParallaxState _horizon;
+  late PillarState _firstPillar;
+  late PillarState _secondPillar;
+  late ParallaxState _ground;
+  late ScoreState _score;
+  late RectState _restartButton;
 
   // Game state
   final _state = BehaviorSubject<GameState>();
@@ -44,7 +44,9 @@ class Game {
 
   stop() {
     _timer?.cancel();
-    _lastTime = null;
+    _timer = null;
+
+    _lastTime = Duration.zero;
   }
 
   void resume() {
@@ -61,14 +63,12 @@ class Game {
     );
   }
 
-  ScreenInfo _screenInfo;
+  late ScreenInfo _screenInfo;
 
   set screenInfo(ScreenInfo value) {
-    if (_screenInfo == null) {
-      _screenInfo = value;
+    _screenInfo = value;
 
-      reset();
-    }
+    reset();
   }
 
   void reset() {
@@ -151,10 +151,8 @@ class Game {
 
   _calculateElapsedTime(Duration elapsed) {
     _elapsedTime = 0.0;
-    if (_lastTime != null) {
-      final delta = (elapsed - _lastTime);
-      _elapsedTime = delta.inMicroseconds / Duration.microsecondsPerSecond;
-    }
+    final delta = (elapsed - _lastTime!);
+    _elapsedTime = delta.inMicroseconds / Duration.microsecondsPerSecond;
     _lastTime = elapsed;
   }
 
@@ -162,19 +160,19 @@ class Game {
 
   Wings _wingsFrame([double wingsSpeed = 1.0]) {
     final wingsIndex =
-        ((_lastTime.inMilliseconds / 150 * wingsSpeed) % Wings.values.length);
+        ((_lastTime!.inMilliseconds / 150 * wingsSpeed) % Wings.values.length);
 
     return Wings.values[wingsIndex.floor()];
   }
 
   _updatePlayer() {
-    double y;
-    double velocity;
+    late double y;
+    late double velocity;
 
     if (_status == GameStatus.waiting) {
       // Flying like a wave
       y = _player.initialY +
-          sin(_lastTime.inMilliseconds / 150 * _screenInfo.factor) * 10;
+          sin(_lastTime!.inMilliseconds / 150 * _screenInfo.factor) * 10;
       velocity = 0;
     } else {
       // Apply the gravity
@@ -207,9 +205,11 @@ class Game {
     if (!hitTheGround) {
       // Rotation
       if (velocity < 0) {
-        angle = lerpDouble(0, _flyUpAngle, -velocity / _player.height * 1.8);
+        angle =
+            lerpDouble(0, _flyUpAngle, -velocity / _player.height * 1.8) ?? 0.0;
       } else {
-        angle = lerpDouble(0, _diveAngle, velocity / _player.height * 1.1);
+        angle =
+            lerpDouble(0, _diveAngle, velocity / _player.height * 1.1) ?? 0.0;
       }
 
       // Wings animation

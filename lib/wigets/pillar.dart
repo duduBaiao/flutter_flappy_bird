@@ -3,11 +3,11 @@ import 'package:vector_math/vector_math.dart';
 
 class Pillar extends StatelessWidget {
   const Pillar({
-    @required this.x,
-    @required this.height,
-    @required this.isBottom,
-    @required this.width,
-    @required this.headHeight,
+    required this.x,
+    required this.height,
+    required this.isBottom,
+    required this.width,
+    required this.headHeight,
   });
 
   final double x;

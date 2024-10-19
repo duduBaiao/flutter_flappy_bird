@@ -2,15 +2,14 @@ import 'package:flutter/widgets.dart';
 
 class ScreenInfo {
   ScreenInfo({
-    @required this.width,
-    @required this.height,
-  }) {
-    _factor = this.height / _virtualSize.height;
-  }
+    required this.width,
+    required this.height,
+  }) :
+    _factor = height / _virtualSize.height;
 
   final double width;
   final double height;
-  double _factor;
+  final double _factor;
 
   double get factor => _factor;
 
